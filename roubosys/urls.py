@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from roubosys.views import hello
+from roubosys.views import hello bchat_outgoing
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello/$', hello),
+    url(r'^bchat/outgoing/([A-Za-z])/$', bchat_outgoing),
 ]
