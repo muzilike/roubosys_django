@@ -1,7 +1,16 @@
-from django.http import HttpResponse
-
+from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
+import json
 def hello(request):
   return HttpResponse("Hello rouboSyS")
 
+@csrf_exempt
 def bchat_outgoing(request, outstring):
-  return HttpResponse("Get a message" + outstring)
+  res = {}
+  if request.method == 'POST':
+    req = json.loads(request.body)
+    text = req["text"] or "text is null"
+    res["text"] = "Get a message: " + text
+    return JsonResponse(res)
+  else:
+    return HttpResponseNotFound("Page not found")
