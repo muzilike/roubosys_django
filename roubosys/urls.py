@@ -20,5 +20,5 @@ from roubosys.views import hello, bchat_outgoing
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello/$', hello),
-    url(r'^bchat/outgoing/(.)/$', bchat_outgoing),
+    url(r'^bchat/outgoing/roubosys/$', bchat_outgoing),
 ]
