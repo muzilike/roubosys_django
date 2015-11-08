@@ -22,7 +22,7 @@ def now():
     req = urllib2.Request(url = url_pm25, headers = headers)
     f = urllib2.urlopen(req)
     res = json.loads(f.read())
-    if res["errMsg"] == "success":
+    if res["retMsg"] == "success":
         res_text = res_text + u"空气指数:" + res["retData"]["aqi"] + "\n"
         res_text = res_text + u"空气水平: " + res["retData"]["level"] + "\n"
         res_text = res_text + u"污染物类型: " + res["retData"]["core"] + "\n"
