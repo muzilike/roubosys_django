@@ -10,11 +10,11 @@ def now():
     req = urllib2.Request(url = url, headers = headers)
     f = urllib2.urlopen(req)
     res = json.loads(f.read())
-    if res["errMsg"] == "suceess":
-        res_text = "城市: " + res["retData"]["city"] + '\n'
-        res_text = res_text + "天气:" + res["retData"]["weather"] + "\n"
-        res_text = res_text + "温度: " + res["retData"]["tmp"] + "\n"
-        res_text = res_text + "温度范围: " + res["retData"]["l_tmp"] + "~" + res["retData"]["h_tmp"] + "\n"
+    if res["errMsg"] == "success":
+        res_text = u"城市: " + res["retData"]["city"] + '\n'
+        res_text = res_text + u"天气:" + res["retData"]["weather"] + "\n"
+        res_text = res_text + u"温度: " + res["retData"]["tmp"] + "\n"
+        res_text = res_text + u"温度范围: " + res["retData"]["l_tmp"] + "~" + res["retData"]["h_tmp"] + "\n"
     else:
-        res_text = "Get weather failed"
+        res_text = "Get weather failed: " + res["errMsg"]
     return res_text

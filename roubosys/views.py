@@ -10,7 +10,7 @@ def bchat_outgoing(request, outstring):
   res = {}
   if request.method == 'POST':
     if outstring == "weather":
-        resp["text"] = weather.now()
+        res["text"] = weather.now()
     else:
         req = json.loads(request.body)
         text = req["text"] or "text is null"
