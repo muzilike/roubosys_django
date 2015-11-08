@@ -1,5 +1,6 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
+from daily_use import weather
 import json
 def hello(request):
   return HttpResponse("Hello rouboSyS")
@@ -8,9 +9,12 @@ def hello(request):
 def bchat_outgoing(request, outstring):
   res = {}
   if request.method == 'POST':
-    req = json.loads(request.body)
-    text = req["text"] or "text is null"
-    res["text"] = "Get a message: " + text
+    if outstring == "weather":
+        resp["text"] = weather.now()
+    else:
+        req = json.loads(request.body)
+        text = req["text"] or "text is null"
+        res["text"] = "Get a message: " + text
     return JsonResponse(res)
   else:
     return HttpResponseNotFound("Page not found")
