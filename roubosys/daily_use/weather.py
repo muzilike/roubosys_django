@@ -13,7 +13,7 @@ def now():
     if res["errMsg"] == "success":
         res_text = u"城市: " + res["retData"]["city"] + '\n'
         res_text = res_text + u"天气:" + res["retData"]["weather"] + "\n"
-        res_text = res_text + u"温度: " + res["retData"]["tmp"] + "\n"
+        res_text = res_text + u"温度: " + res["retData"]["temp"] + "\n"
         res_text = res_text + u"温度范围: " + res["retData"]["l_tmp"] + "~" + res["retData"]["h_tmp"] + "\n"
     else:
         res_text = "Get weather failed: " + res["errMsg"]
