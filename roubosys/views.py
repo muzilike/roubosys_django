@@ -14,7 +14,7 @@ def bchat_outgoing(request, outstring):
         res["text"] = weather.now()
     elif outstring == "alarm":
         req = json.loads(request.body)
-        text = req["text"] or "text is null"
+        text = req["text"][6:] or "text is null"
         publish.single("roubosys/fitbit/alarm/set", text, hostname="127.0.0.1")
         res["text"] = "Set fitbit alarm: " + text
     else:
